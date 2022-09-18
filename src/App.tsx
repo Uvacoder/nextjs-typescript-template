@@ -4,6 +4,7 @@ import AllCharacters, { allCharactersLoader } from "./pages/AllCharacters";
 import BookPage, { bookPageLoader } from "./pages/BookPage";
 import CharacterPage, { characterPageLoader } from "./pages/CharacterPage";
 import Discover, { discoverLoader } from "./pages/Discover";
+import MyBooks, { myBooksLoader } from "./pages/MyBooks";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,12 @@ const router = createBrowserRouter([
         path: "/character/:characterId",
         element: <CharacterPage />,
         loader: characterPageLoader,
+      },
+      {
+        path: "/my-books",
+        element: <MyBooks />,
+        loader: myBooksLoader,
+        action: () => null,
       },
     ],
   },

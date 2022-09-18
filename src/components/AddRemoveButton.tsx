@@ -6,10 +6,12 @@ import { useState } from "react";
 interface AddRemoveButtonProps {
   bookId: number;
   tooltipPosition?: FloatingPosition;
+  onAddRemove?: () => void;
 }
 export default function AddRemoveButton({
   bookId,
   tooltipPosition,
+  onAddRemove,
 }: AddRemoveButtonProps) {
   const [isAdded, setIsAdded] = useState(() => {
     const books = localStorage.getItem("books");
@@ -30,6 +32,7 @@ export default function AddRemoveButton({
       }
     }
     setIsAdded(true);
+    onAddRemove?.();
   };
 
   const remove = (event: any) => {
@@ -43,6 +46,7 @@ export default function AddRemoveButton({
       localStorage.setItem("books", JSON.stringify(parsedBooks));
     }
     setIsAdded(false);
+    onAddRemove?.();
   };
 
   return isAdded ? (
