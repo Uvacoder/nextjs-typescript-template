@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import AllCharacters, { allCharactersLoader } from "./pages/AllCharacters";
 import BookPage, { bookPageLoader } from "./pages/BookPage";
+import CharacterPage, { characterPageLoader } from "./pages/CharacterPage";
 import Discover, { discoverLoader } from "./pages/Discover";
 
 const router = createBrowserRouter([
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
         path: "/book/:bookId/all-characters",
         element: <AllCharacters />,
         loader: allCharactersLoader,
+      },
+      {
+        path: "/character/:characterId",
+        element: <CharacterPage />,
+        loader: characterPageLoader,
       },
     ],
   },

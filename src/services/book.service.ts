@@ -27,5 +27,5 @@ export async function getBooks(): Promise<Book[]> {
 export async function getBookById(id: number): Promise<Book> {
   return fetch(`${API_URL}/books/${id}`)
     .then((response) => response.json())
-    .then((book) => ({ ...book, id: getIdFromUrl(book.url) }));
+    .then((book) => ({ ...book, id }));
 }

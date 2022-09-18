@@ -1,6 +1,7 @@
 import { API_URL } from "../utils/config";
 
 export type Character = {
+  id: number;
   url: string;
   name: string;
   gender: string;
@@ -20,7 +21,7 @@ export type Character = {
 };
 
 export async function getCharacterById(id: number): Promise<Character> {
-  return fetch(`${API_URL}/characters/${id}`).then((response) =>
-    response.json()
-  );
+  return fetch(`${API_URL}/characters/${id}`)
+    .then((response) => response.json())
+    .then((character) => ({ ...character, id }));
 }

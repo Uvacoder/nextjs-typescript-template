@@ -84,7 +84,13 @@ export default function BookPage() {
         <Grid gutter="xs">
           {characters.map((character) => (
             <Grid.Col span={6}>
-              <Card p="xs" radius="md" withBorder component="span">
+              <Card
+                p="xs"
+                radius="md"
+                withBorder
+                component={Link}
+                to={`/character/${character.id}`}
+              >
                 <Text weight="bold" size="xl">
                   {character.name}
                 </Text>
