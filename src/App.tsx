@@ -1,5 +1,3 @@
-import "./App.css";
-
 function App() {
   const fetchBook = () => {
     fetch("https://www.anapioficeandfire.com/api/books/1")
