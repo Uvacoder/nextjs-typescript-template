@@ -1,8 +1,8 @@
+import { getBookById } from "../services/book.service";
+
 export default function Home() {
   const fetchBook = () => {
-    fetch("https://www.anapioficeandfire.com/api/books/1")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    getBookById(1).then((data) => console.log(data));
   };
 
   return (
