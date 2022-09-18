@@ -1,15 +1,20 @@
-function App() {
-  const fetchBook = () => {
-    fetch("https://www.anapioficeandfire.com/api/books/1")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  };
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
 
-  return (
-    <div className="App">
-      <button onClick={fetchBook}>fetch book</button>
-    </div>
-  );
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;
