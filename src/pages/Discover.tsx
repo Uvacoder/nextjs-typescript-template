@@ -6,16 +6,19 @@ import {
   useMantineColorScheme,
   TextInput,
 } from "@mantine/core";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { getBooks } from "../services/book.service";
 import { IconSearch } from "@tabler/icons";
 import { useState } from "react";
 
-type LoaderData = Awaited<ReturnType<typeof discoverLoader>>;
+type LoaderData = {
+  books: Awaited<ReturnType<typeof getBooks>>;
+};
 
 export async function discoverLoader() {
   const books = await getBooks();
-  return { books };
+  const data: LoaderData = { books };
+  return data;
 }
 
 export default function Discover() {
@@ -42,15 +45,20 @@ export default function Discover() {
         />
 
         {filteredBooks.map((book) => (
-          <Card shadow="sm" p="lg" radius="md" withBorder>
-            <Stack spacing="xs">
-              <Text weight="bold" size="xl">
-                {book.name}
-              </Text>
-              <Text color={colorScheme === "dark" ? "gray.5" : "gray.7"}>
-                by {book.authors.join(", ")}
-              </Text>
-            </Stack>
+          <Card
+            component={Link}
+            to={`/book/${book.id}`}
+            shadow="sm"
+            p="lg"
+            radius="md"
+            withBorder
+          >
+            <Text weight="bold" size="xl">
+              {book.name}
+            </Text>
+            <Text color={colorScheme === "dark" ? "gray.5" : "gray.7"}>
+              by {book.authors.join(", ")}
+            </Text>
           </Card>
         ))}
       </Stack>

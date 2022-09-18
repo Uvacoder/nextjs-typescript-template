@@ -1,6 +1,8 @@
-import { API_URL } from "../config";
+import { API_URL } from "../utils/config";
+import { getIdFromUrl } from "../utils/helpers";
 
 export type Book = {
+  id: number;
   url: string;
   name: string;
   isbn: string;
@@ -15,9 +17,15 @@ export type Book = {
 };
 
 export async function getBooks(): Promise<Book[]> {
-  return fetch(`${API_URL}/books`).then((res) => res.json());
+  return fetch(`${API_URL}/books`)
+    .then((res) => res.json())
+    .then((books) =>
+      books.map((book: Book) => ({ ...book, id: getIdFromUrl(book.url) }))
+    );
 }
 
 export async function getBookById(id: number): Promise<Book> {
-  return fetch(`${API_URL}/books/${id}`).then((response) => response.json());
+  return fetch(`${API_URL}/books/${id}`)
+    .then((response) => response.json())
+    .then((book) => ({ ...book, id: getIdFromUrl(book.url) }));
 }

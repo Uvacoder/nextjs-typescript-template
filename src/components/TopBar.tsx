@@ -6,6 +6,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { IconMoonStars, IconSun } from "@tabler/icons";
+import { Link } from "react-router-dom";
 
 export default function TopBar() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -14,7 +15,11 @@ export default function TopBar() {
   return (
     <Box mb="xl">
       <Group position="apart">
-        <Title order={1}>GOT Books</Title>
+        <Title order={1}>
+          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+            GOT Books
+          </Link>
+        </Title>
         <Group>
           <ActionIcon
             onClick={() => toggleColorScheme()}
