@@ -15,7 +15,7 @@ export default function Infos({ infos }: InfosProps) {
           {infos
             .filter((info) => !!info.info)
             .map((info) => (
-              <Grid.Col span={6}>
+              <Grid.Col key={info.label} span={6}>
                 <span style={{ fontWeight: "bold" }}>{info.label}</span>:{" "}
                 {info.info}
               </Grid.Col>

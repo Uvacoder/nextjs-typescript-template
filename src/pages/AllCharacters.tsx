@@ -73,7 +73,7 @@ export default function AllCharacters() {
 
         <Grid gutter="xs">
           {filteredCharacters.map((character) => (
-            <Grid.Col span={6}>
+            <Grid.Col span={6} key={`character-${character.id}`}>
               <Card p="xs" radius="md" withBorder component="span">
                 <Text weight="bold" size="xl">
                   {character.name}

@@ -83,7 +83,7 @@ export default function BookPage() {
 
         <Grid gutter="xs">
           {characters.map((character) => (
-            <Grid.Col span={6}>
+            <Grid.Col span={6} key={`character-${character.id}`}>
               <Card
                 p="xs"
                 radius="md"

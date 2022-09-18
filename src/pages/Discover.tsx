@@ -46,6 +46,7 @@ export default function Discover() {
 
         {filteredBooks.map((book) => (
           <Card
+            key={`book-${book.id}`}
             component={Link}
             to={`/book/${book.id}`}
             shadow="sm"
