@@ -15,6 +15,7 @@ import {
   redirect,
   useLoaderData,
 } from "react-router-dom";
+import CharacterEntry from "../components/CharacterEntry";
 import { getBookById } from "../services/book.service";
 import { getCharacterById } from "../services/character.service";
 import { getIdFromUrl, isNumeric } from "../utils/helpers";
@@ -74,11 +75,7 @@ export default function AllCharacters() {
         <Grid gutter="xs">
           {filteredCharacters.map((character) => (
             <Grid.Col span={6} key={`character-${character.id}`}>
-              <Card p="xs" radius="md" withBorder component="span">
-                <Text weight="bold" size="xl">
-                  {character.name}
-                </Text>
-              </Card>
+              <CharacterEntry character={character} />
             </Grid.Col>
           ))}
         </Grid>

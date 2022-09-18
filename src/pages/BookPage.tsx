@@ -16,6 +16,7 @@ import {
   useLoaderData,
   useParams,
 } from "react-router-dom";
+import CharacterEntry from "../components/CharacterEntry";
 import Infos from "../components/Infos";
 import { getBookById } from "../services/book.service";
 import { getCharacterById } from "../services/character.service";
@@ -84,17 +85,7 @@ export default function BookPage() {
         <Grid gutter="xs">
           {characters.map((character) => (
             <Grid.Col span={6} key={`character-${character.id}`}>
-              <Card
-                p="xs"
-                radius="md"
-                withBorder
-                component={Link}
-                to={`/character/${character.id}`}
-              >
-                <Text weight="bold" size="xl">
-                  {character.name}
-                </Text>
-              </Card>
+              <CharacterEntry character={character} />
             </Grid.Col>
           ))}
         </Grid>
