@@ -6,8 +6,16 @@ import {
   Space,
   Grid,
   Card,
+  Group,
+  Anchor,
 } from "@mantine/core";
-import { LoaderFunctionArgs, redirect, useLoaderData } from "react-router-dom";
+import {
+  Link,
+  LoaderFunctionArgs,
+  redirect,
+  useLoaderData,
+  useParams,
+} from "react-router-dom";
 import Infos from "../components/Infos";
 import { getBookById } from "../services/book.service";
 import { getCharacterById } from "../services/character.service";
@@ -36,6 +44,7 @@ export async function bookPageLoader({ params }: LoaderFunctionArgs) {
 }
 
 export default function BookPage() {
+  const params = useParams();
   const { book, characters } = useLoaderData() as LoaderData;
   const { colorScheme } = useMantineColorScheme();
 
@@ -46,7 +55,7 @@ export default function BookPage() {
         by {book.authors.join(", ")}
       </Text>
 
-      <Space h="md" />
+      <Space h="xl" />
 
       <Infos
         infos={[
@@ -62,10 +71,15 @@ export default function BookPage() {
         ]}
       />
 
-      <Space h="md" />
+      <Space h="xl" />
 
       <Stack spacing="xs">
-        <Title order={3}>Main characters</Title>
+        <Group position="apart">
+          <Title order={3}>Main characters</Title>
+          <Anchor component={Link} to={`/book/${params.bookId}/all-characters`}>
+            See all characters
+          </Anchor>
+        </Group>
 
         <Grid gutter="xs">
           {characters.map((character) => (
