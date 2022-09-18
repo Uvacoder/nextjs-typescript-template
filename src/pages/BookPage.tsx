@@ -8,6 +8,7 @@ import {
   Card,
   Group,
   Anchor,
+  Box,
 } from "@mantine/core";
 import {
   Link,
@@ -16,6 +17,7 @@ import {
   useLoaderData,
   useParams,
 } from "react-router-dom";
+import AddRemoveButton from "../components/AddRemoveButton";
 import CharacterEntry from "../components/CharacterEntry";
 import Infos from "../components/Infos";
 import { getBookById } from "../services/book.service";
@@ -51,10 +53,16 @@ export default function BookPage() {
 
   return (
     <>
-      <Title order={2}>{book.name}</Title>
-      <Text color={colorScheme === "dark" ? "gray.5" : "gray.7"}>
-        by {book.authors.join(", ")}
-      </Text>
+      <Group position="apart">
+        <Box>
+          <Title order={2}>{book.name}</Title>
+          <Text color={colorScheme === "dark" ? "gray.5" : "gray.7"}>
+            by {book.authors.join(", ")}
+          </Text>
+        </Box>
+
+        <AddRemoveButton bookId={book.id} />
+      </Group>
 
       <Space h="xl" />
 

@@ -4,6 +4,7 @@ import {
   Group,
   Title,
   useMantineColorScheme,
+  Text,
 } from "@mantine/core";
 import { IconMoonStars, IconSun } from "@tabler/icons";
 import { Link } from "react-router-dom";

@@ -5,11 +5,14 @@ import {
   Text,
   useMantineColorScheme,
   TextInput,
+  Group,
+  Box,
 } from "@mantine/core";
 import { Link, useLoaderData } from "react-router-dom";
 import { getBooks } from "../services/book.service";
 import { IconSearch } from "@tabler/icons";
 import { useState } from "react";
+import AddRemoveButton from "../components/AddRemoveButton";
 
 type LoaderData = {
   books: Awaited<ReturnType<typeof getBooks>>;
@@ -54,12 +57,18 @@ export default function Discover() {
             radius="md"
             withBorder
           >
-            <Text weight="bold" size="xl">
-              {book.name}
-            </Text>
-            <Text color={colorScheme === "dark" ? "gray.5" : "gray.7"}>
-              by {book.authors.join(", ")}
-            </Text>
+            <Group position="apart">
+              <Box>
+                <Text weight="bold" size="xl">
+                  {book.name}
+                </Text>
+                <Text color={colorScheme === "dark" ? "gray.5" : "gray.7"}>
+                  by {book.authors.join(", ")}
+                </Text>
+              </Box>
+
+              <AddRemoveButton bookId={book.id} tooltipPosition="left" />
+            </Group>
           </Card>
         ))}
       </Stack>
