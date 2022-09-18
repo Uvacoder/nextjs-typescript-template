@@ -27,7 +27,7 @@ export default function Layout() {
         withGlobalStyles
         withNormalizeCSS
       >
-        <Container>
+        <Container py="lg">
           <Topbar />
           <Outlet />
         </Container>

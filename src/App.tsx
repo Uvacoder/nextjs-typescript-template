@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
-import Home from "./pages/Home";
+import Discover, { discoverLoader } from "./pages/Discover";
 
 const router = createBrowserRouter([
   {
@@ -9,7 +9,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Discover />,
+        loader: discoverLoader,
       },
     ],
   },

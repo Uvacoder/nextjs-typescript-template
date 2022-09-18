@@ -12,9 +12,9 @@ export default function TopBar() {
   const dark = colorScheme === "dark";
 
   return (
-    <Box my="md">
+    <Box mb="xl">
       <Group position="apart">
-        <Title size="h1">GOT Books</Title>
+        <Title order={1}>GOT Books</Title>
         <Group>
           <ActionIcon
             onClick={() => toggleColorScheme()}
